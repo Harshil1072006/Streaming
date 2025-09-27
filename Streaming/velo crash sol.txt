@@ -1,0 +1,146 @@
+Of course. This is a very frustrating situation, and it's common when a game with a deep anti-cheat system like Valorant is interrupted by a sudden internet loss. The problem is often that either the Riot Client or the Riot Vanguard anti-cheat service gets "stuck" in a bad state, and even a restart doesn't always clear it properly.
+
+Since you've already tried the basic and most common solutions (Task Manager, restart, forced restart), here are the next steps to take, in order from simplest to most involved.
+
+### Option 1: A More Thorough Process Shutdown
+
+Sometimes, background services related to Riot don't close properly, even with Task Manager.
+
+1.  Press `Ctrl + Shift + Esc` to open the Task Manager.
+2.  Click on the **"Details"** tab at the top. This view shows you everything that's running.
+3.  Look for and end these specific processes one by one. Right-click on each and select "End task":
+    * `VALORANT.exe`
+    * `RiotClientServices.exe`
+    * `RiotClientUx.exe`
+    * `vgk.exe`
+    * `vgc.exe` (This is the main Vanguard service)
+4.  After you have ended all of them, try launching the Riot Client again.
+
+### Option 2: Clear the Riot Client Cache
+
+Sometimes, corrupted cache files can prevent the client from launching or logging in correctly.
+
+1.  Make sure all Riot and Valorant processes are closed using the method in Option 1.
+2.  Press the `Windows Key + R` to open the Run dialog.
+3.  Type `%localappdata%` and press Enter. This will open the `AppData\Local` folder.
+4.  Find the **"Riot Games"** folder and open it.
+5.  Delete the entire **"Riot Client"** folder.
+6.  Restart your PC. When you launch the game next, the Riot Client will redownload the necessary files and you will have to log in again.
+
+### Option 3: Use the Built-in Repair Tool
+
+The Riot Client has a built-in tool to fix corrupted game files.
+
+1.  Open the Riot Client.
+2.  Click on your profile icon in the top-right corner and go to **"Settings"**.
+3.  Select **"VALORANT"** from the list of games on the left.
+4.  Click the **"Repair"** button.
+5.  Let the client scan all the files. This can take a few minutes. It will automatically download and replace any broken or missing files.
+
+### Option 4: Reinstall Riot Vanguard (This is the most likely solution)
+
+Riot Vanguard is the kernel-level anti-cheat. When it gets corrupted, it can cause exactly the kind of "stuck on startup" issue you are describing. A simple restart doesn't fix it because it loads with Windows itself.
+
+1.  Press the `Windows Key`, type `Add or remove programs`, and press Enter.
+2.  In the list of installed applications, find **"Riot Vanguard"**.
+3.  Click on it and select **"Uninstall"**. Follow the prompts to remove it.
+4.  **Important:** Restart your computer completely after uninstalling.
+5.  Once your PC has restarted, launch the Riot Client.
+6.  The client will detect that Vanguard is missing and will automatically start reinstalling it.
+7.  **Important:** You will need to **restart your computer one more time** to finalize the Vanguard installation.
+
+After this second restart, Valorant should launch correctly.
+
+### Option 5: Flush your DNS and Reset Network Settings
+
+An internet outage can sometimes mess up your computer's saved network data. Clearing this can help.
+
+1.  Press the `Windows Key`, type `cmd`.
+2.  Right-click on **"Command Prompt"** and select **"Run as administrator"**.
+3.  Type the following commands, pressing Enter after each one:
+    * `ipconfig /flushdns`
+    * `netsh winsock reset`
+4.  After running both commands, restart your PC.
+
+### Summary of What to Try Next (In Order)
+
+If you're facing this problem again, follow this checklist:
+
+1.  **Thoroughly Kill Processes:** Use the "Details" tab in Task Manager to kill all Riot and Valorant-related executables.
+2.  **Repair the Game:** Use the Riot Client's built-in repair tool.
+3.  **Reinstall Riot Vanguard:** This is the most effective solution for deep-level launch problems. Uninstall it, restart, let it reinstall, and restart again.
+4.  **Clear Caches & Flush DNS:** If the problem seems network-related.
+5.  **Full Reinstallation:** As a last resort, uninstall both Valorant and Riot Vanguard, restart your PC, and then download a fresh installer from the official website.
+
+The issue you faced was almost certainly caused by Riot Vanguard getting into a bad state after the sudden disconnection. **Option 4 is usually the one that fixes it.**
+
+
+
+Got it 👍 You’re asking about **Valorant** freezing or not responding after your PC loses internet connection mid-match, and you’ve already tried Task Manager, forced restart, logout, etc., but the game keeps getting stuck on the “opening/loading screen” after reconnecting.
+
+Here are a few other things you can try beyond the basic restart/Task Manager:
+
+---
+
+### 🔧 Fixes to Try
+
+1. **Kill Riot Processes Completely**
+
+   * After ending Valorant in Task Manager, make sure you also end all processes like:
+
+     * `RiotClientServices.exe`
+     * `RiotClientUx.exe`
+     * `RiotClientUxRender.exe`
+     * `vgc.exe`
+   * Sometimes Riot Vanguard or Riot Client keeps running in the background and blocks Valorant from launching.
+
+2. **Restart Riot Vanguard (Anti-Cheat)**
+
+   * Press `Win + R`, type `services.msc`, and hit Enter.
+   * Find **VGC** service.
+   * Right-click → Restart (or Start if stopped).
+   * Then relaunch Valorant.
+
+3. **Flush & Reset Network**
+
+   * Open Command Prompt as Admin and run:
+
+     ```
+     ipconfig /flushdns
+     netsh winsock reset
+     netsh int ip reset
+     ```
+   * Restart your PC and try again.
+
+4. **Clear Riot Client Cache**
+
+   * Go to `C:\Users\<YourName>\AppData\Local\Riot Games\Riot Client`
+   * Delete the folder **Riot Client** (don’t worry, it will rebuild).
+   * Relaunch Valorant.
+
+5. **Repair Valorant Installation**
+
+   * Open Riot Client.
+   * Click the profile icon (top right) → **Settings** → Valorant → **Repair**.
+   * This fixes corrupted files caused by improper shutdowns.
+
+6. **Reinstall Vanguard Only**
+
+   * Uninstall **Riot Vanguard** from “Apps & Features.”
+   * Restart PC.
+   * Launch Valorant (it will reinstall Vanguard automatically).
+
+---
+
+### 🖥️ Emergency Workaround (If Stuck Mid-Match)
+
+If you get stuck mid-match again due to internet cut:
+
+* Disconnect your PC from the network fully (turn off Wi-Fi or unplug cable).
+* Wait a few minutes, then reconnect.
+* This sometimes forces the client to “desync” and reconnect cleanly, instead of staying stuck.
+
+---
+
+👉 Can you confirm: after the restart, does Valorant get stuck **before login (Riot Client)**, or **after login on the Valorant splash screen**?
+That will help me narrow whether it’s a **Riot Client problem** or a **Valorant game client problem**.
